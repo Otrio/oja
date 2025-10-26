@@ -1,0 +1,98 @@
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(20px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInUp {
+  from { transform: translateY(10px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes shimmer {
+  from { background-position: -1000px 0; }
+  to { background-position: 1000px 0; }
+}
+
+/* Loading states */
+.sb-loading {
+  position: relative;
+  overflow: hidden;
+}
+
+.sb-loading::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(90deg, 
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.2) 25%, 
+    rgba(255,255,255,0.2) 50%, 
+    rgba(255,255,255,0) 100%
+  );
+  animation: shimmer 2s infinite;
+}
+
+.dark .sb-loading::after {
+  background: linear-gradient(90deg, 
+    rgba(0,0,0,0) 0%,
+    rgba(255,255,255,0.05) 25%, 
+    rgba(255,255,255,0.05) 50%, 
+    rgba(0,0,0,0) 100%
+  );
+}
+
+/* Feedback animations */
+.sb-spin {
+  animation: spin 1s linear infinite;
+}
+
+.sb-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.sb-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.sb-slide-in {
+  animation: slideInUp 0.3s ease-out;
+}
+
+/* Loading skeleton */
+.sb-skeleton {
+  background: linear-gradient(90deg,
+    var(--sb-gray-100) 25%,
+    var(--sb-gray-50) 50%,
+    var(--sb-gray-100) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+  border-radius: 4px;
+}
+
+.dark .sb-skeleton {
+  background: linear-gradient(90deg,
+    var(--sb-gray-800) 25%,
+    var(--sb-gray-900) 50%,
+    var(--sb-gray-800) 75%
+  );
+}

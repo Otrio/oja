@@ -1,0 +1,245 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "systemia";
+  src: url("fonts/SystemiaTest-Thin-BF656e86916d1f5.otf") format("opentype");
+  font-weight: 100;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: "systemia";
+  src: url("fonts/SystemiaTest-Bold-BF656e8690c023b.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "systemia";
+  src: url("fonts/SystemiaTest-Medium-BF656e86915b1b0.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "systemia";
+  src: url("fonts/SystemiaTest-Extrabold-BF656e86911316b.otf")
+    format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+
+/* Fontshare-inspired Design System */
+:root {
+    /* Animation Durations */
+    --sb-transition-duration: 200ms;
+    --sb-transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Fontshare Color Palette */
+  --bg-dark: #1a1a1a;             /* Dark charcoal background */
+  --bg-light: #ffffff;            /* White content areas */
+  --bg-accent: #f8f7e9;           /* Creamy yellow accent */
+  --text-primary: #ffffff;        /* White main text */
+  --text-secondary: #e0e0e0;      /* Light grey text */
+  --text-muted: #808080;          /* Medium grey muted text */
+  --text-dark: #1a1a1a;          /* Dark text on light backgrounds */
+  --border-subtle: #2a2a2a;      /* Subtle borders */
+  --border-light: #e5e7eb;       /* Light borders */
+  
+  /* Accent Colors */
+  --primary-green: #006239;
+  --primary-teal: #fe6441;
+  --primary-orange: #F59E0B;
+  --primary-pink: #10154c;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "systemia", sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+  /* Dark mode overrides */
+  .dark {
+    --bg-light: #1a1a1a;
+    --bg-dark: #000000;
+    --text-primary: #ffffff;
+    --text-secondary: #e0e0e0;
+    --text-dark: #ffffff;
+    --border-light: #2a2a2a;
+    --border-subtle: #333333;
+  }
+
+  /* Import animations */
+  @import "./assets/animations.css";
+
+/* Typography Scale */
+.text-xs { font-size: 10px; }
+.text-sm { font-size: 12px; }
+.text-base { font-size: 14px; }
+.text-lg { font-size: 16px; }
+.text-xl { font-size: 18px; }
+.text-2xl { font-size: 22px; }
+.text-3xl { font-size: 28px; }
+
+/* Fontshare-inspired Card Styles */
+.modern-card {
+  background: #1f2937;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3);
+  border: 1px solid #374151;
+  transition: all 0.2s ease-in-out;
+  padding: 16px;
+}
+
+.modern-card:hover {
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.4);
+  transform: translateY(-1px);
+}
+
+/* Dark Theme Cards */
+.dark-card {
+  background: var(--bg-dark);
+  border-radius: 8px;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border-subtle);
+  transition: all 0.2s ease-in-out;
+  padding: 16px;
+}
+
+.dark-card:hover {
+  box-shadow: var(--shadow-xl);
+  transform: translateY(-1px);
+}
+
+/* Fontshare-inspired Button Styles */
+.modern-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 12px;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  font-family: inherit;
+}
+
+.modern-btn-primary {
+  background: var(--primary-green);
+  color: white;
+}
+
+.modern-btn-primary:hover {
+  background: #004d2a;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Fontshare-style Accent Button */
+.modern-btn-accent {
+  background: var(--bg-accent);
+  color: var(--text-dark);
+  font-weight: 600;
+}
+
+.modern-btn-accent:hover {
+  background: #f5f4e7;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Dark Button */
+.modern-btn-dark {
+  background: var(--bg-dark);
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
+}
+
+.modern-btn-dark:hover {
+  background: #004d2a;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Icon Styles */
+.icon-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: white;
+}
+
+.icon-circle.green { background: var(--primary-green); }
+.icon-circle.teal { background: var(--primary-teal); }
+.icon-circle.orange { background: var(--primary-orange); }
+.icon-circle.pink { background: var(--primary-pink); }
+
+/* Smooth Transitions */
+* {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Notification Animation */
+@keyframes shrink {
+  from { width: 100%; }
+  to { width: 0%; }
+}
+
+.logo { width: 3rem; }
+.logo.react { transform: rotate(20deg); }
+
+/* Custom scrollbars */
+/* WebKit browsers */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f3f4f6; /* tailwind gray-100 */
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(0,98,57,0.9), rgba(0,98,57,0.7)); /* green theme */
+  border-radius: 999px;
+  border: 2px solid #f3f4f6; /* creates padding effect */
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0,98,57,0.9) #f3f4f6;
+}
+
+/* Ensure scrollable containers get consistent rounded look */
+.modern-card, .overflow-x-auto, .max-h-96, .modern-modal-scroll {
+  scrollbar-width: thin;
+}

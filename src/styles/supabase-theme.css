@@ -1,0 +1,69 @@
+/* --- SUPABASE-LIKE THEME TOKENS AND COMPONENTS --- */
+:root {
+  /* Core colors */
+  --sb-bg: #0b1020;
+  --sb-surface: #0f1724;
+  --sb-muted: #9ca3af;
+  --sb-primary: #7c3aed;
+  --sb-accent: #06b6d4;
+  
+  /* Extended palette */
+  --sb-gray-50: #f9fafb;
+  --sb-gray-100: #f3f4f6;
+  --sb-gray-800: #1f2937;
+  --sb-gray-900: #111827;
+  
+  /* Gradients */
+  --gradient-brand: linear-gradient(90deg, var(--sb-primary), var(--sb-accent));
+  --gradient-subtle: linear-gradient(90deg, rgba(124,58,237,0.06), rgba(6,182,212,0.03));
+  --gradient-sidebar: linear-gradient(180deg, var(--sb-surface), var(--sb-bg));
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.02);
+  --shadow-base: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+}
+
+/* Dark mode overrides */
+.dark {
+  --bg-light: var(--sb-bg);
+  --bg-accent: var(--sb-surface);
+  --text-primary: #e6eef8;
+  --text-secondary: #b6c2d6;
+  --border-subtle: var(--sb-gray-800);
+  --primary-purple: var(--sb-primary);
+  
+  /* Dark mode shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.1);
+  --shadow-base: 0 1px 3px 0 rgb(0 0 0 / 0.2);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.2);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.2);
+}
+
+/* Supabase-like surface styles */
+.header-surface { 
+  background: var(--gradient-subtle);
+  backdrop-filter: blur(8px);
+}
+
+.sidebar-surface { 
+  background: var(--gradient-sidebar);
+}
+
+/* Refined transitions */
+.sb-transition-base {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sb-transition-transform {
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sb-hover-translate {
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sb-hover-translate:hover {
+  transform: translateY(-1px);
+}

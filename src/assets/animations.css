@@ -1,0 +1,87 @@
+@keyframes sb-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes sb-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes sb-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes sb-skeleton {
+  from {
+    opacity: 0.6;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.sb-fade-in {
+  animation: sb-fade-in 200ms ease-out;
+}
+
+.sb-slide-in {
+  animation: sb-slide-in 300ms cubic-bezier(0.2, 0.0, 0, 1.0);
+}
+
+.sb-spin {
+  animation: sb-spin 1s linear infinite;
+}
+
+.sb-skeleton {
+  background-color: rgb(243 244 246);
+  border-radius: 0.375rem;
+  animation: sb-skeleton 1.5s ease-in-out infinite alternate;
+}
+
+.dark .sb-skeleton {
+  background-color: rgb(31 41 55);
+}
+/* Loading state utility classes */
+.sb-loading {
+  position: relative;
+  pointer-events: none;
+  opacity: 0.7;
+  transition: opacity 200ms ease;
+}
+
+.sb-loading::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(2px);
+}
+
+/* Transition utilities */
+.sb-transition {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+.sb-transition-transform {
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}

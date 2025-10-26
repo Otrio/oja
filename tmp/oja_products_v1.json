@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1760096029854,
+    "name": "Test A",
+    "pack_size": 12,
+    "cost_per_unit": 1,
+    "cost_per_pack": 12,
+    "selling_per_unit": 2,
+    "selling_per_pack": 24,
+    "total_units_in_stock": 100
+  }
+]
