@@ -8,6 +8,14 @@ export default function Login() {
   const [shouldNavigate, setShouldNavigate] = React.useState(false)
   const nav = useNavigate()
   const location = useLocation()
+
+  // If user is already logged in, redirect to dashboard immediately
+  React.useEffect(() => {
+    if (user) {
+      nav('/dashboard', { replace: true })
+    }
+  }, [user, nav])
+
   const params = new URLSearchParams(location.search)
   const returnTo = params.get('returnTo') || '/dashboard'
   const [email, setEmail] = React.useState('')

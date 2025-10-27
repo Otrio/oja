@@ -4,8 +4,16 @@ import { useUser } from '../context/UserContext'
 import { useNotifications } from '../context/NotificationContext'
 
 export default function Signup() {
-  const { signup } = useUser()
+  const { signup, user } = useUser()
   const nav = useNavigate()
+
+  // If user is already logged in, redirect to dashboard immediately
+  React.useEffect(() => {
+    if (user) {
+      nav('/dashboard', { replace: true })
+    }
+  }, [user, nav])
+
   const [name, setName] = React.useState('')
   const [email, setEmail] = React.useState('')
   const [password, setPassword] = React.useState('')
