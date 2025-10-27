@@ -36,10 +36,14 @@ export default function Signup() {
     }
 
     try {
-      setLoading(true)
-  await signup({ name, email, password, role: ROLE_FOR_SIGNUP })
-      addNotification({ title: 'Success', message: 'Account created successfully', type: 'success' })
-      nav('/dashboard')
+    setLoading(true)
+    await signup({ name, email, password, role: ROLE_FOR_SIGNUP })
+    addNotification({ title: 'Success', message: 'Account created successfully', type: 'success' })
+
+    // Wait for auth state to settle before navigating so protected routes don't bounce back
+    // Simple short delay is sufficient here; the UserContext will populate shortly.
+    await new Promise(r => setTimeout(r, 500))
+    nav('/dashboard')
     } catch (err) {
       // Friendly error mapping for common signup errors
       const errMsg = err?.message || err?.error_description || err?.hint || String(err)
@@ -150,7 +154,7 @@ export default function Signup() {
               placeholder="Full name"
               value={name}
               onChange={e => { setName(e.target.value); setFieldErrors(prev => ({ ...prev, name: '' })) }}
-              className={`w-full px-0 py-3 bg-transparent border-0 border-b-2 text-white placeholder-gray-500 focus:outline-none transition-colors ${
+              className={`w-full px-3 py-3 bg-transparent border-0 border-b-2 text-white placeholder-gray-400 focus:outline-none transition-colors focus:bg-gray-800 rounded-sm ${
                 fieldErrors.name ? 'border-red-500' : 'border-gray-600 focus:border-[#006239]'
               }`}
             />
@@ -164,7 +168,7 @@ export default function Signup() {
               placeholder="Email"
               value={email}
               onChange={e => { setEmail(e.target.value); setFieldErrors(prev => ({ ...prev, email: '' })) }}
-              className={`w-full px-0 py-3 bg-transparent border-0 border-b-2 text-white placeholder-gray-500 focus:outline-none transition-colors ${
+              className={`w-full px-3 py-3 bg-transparent border-0 border-b-2 text-white placeholder-gray-400 focus:outline-none transition-colors focus:bg-gray-800 rounded-sm ${
                 fieldErrors.email ? 'border-red-500' : 'border-gray-600 focus:border-[#006239]'
               }`}
             />
@@ -178,7 +182,7 @@ export default function Signup() {
               placeholder="Password"
               value={password}
               onChange={e => { setPassword(e.target.value); setFieldErrors(prev => ({ ...prev, password: '' })) }}
-              className={`w-full px-0 py-3 bg-transparent border-0 border-b-2 text-white placeholder-gray-500 focus:outline-none transition-colors ${
+              className={`w-full px-3 py-3 bg-transparent border-0 border-b-2 text-white placeholder-gray-400 focus:outline-none transition-colors focus:bg-gray-800 rounded-sm ${
                 fieldErrors.password ? 'border-red-500' : 'border-gray-600 focus:border-[#006239]'
               }`}
             />
@@ -190,9 +194,16 @@ export default function Signup() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3 bg-gray-800 hover:bg-gray-700 text-white font-medium rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              aria-busy={loading}
+              className="w-full py-3 bg-gray-800 hover:bg-gray-700 text-white font-medium rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
             >
-              {loading ? 'Creating account...' : 'Create Account'}
+              {loading && (
+                <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
+                </svg>
+              )}
+              <span>{loading ? 'Creating account...' : 'Create Account'}</span>
             </button>
           </div>
 

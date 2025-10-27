@@ -4,7 +4,8 @@ import { useUser } from '../context/UserContext'
 import { useNotifications } from '../context/NotificationContext'
 
 export default function Login() {
-  const { login } = useUser()
+  const { login, user } = useUser()
+  const [shouldNavigate, setShouldNavigate] = React.useState(false)
   const nav = useNavigate()
   const location = useLocation()
   const params = new URLSearchParams(location.search)
@@ -37,10 +38,13 @@ export default function Login() {
     try {
       setLoading(true)
       // call useUser.login which uses Supabase under the hood
-      await Promise.resolve(login({ email, password }))
+      const res = await Promise.resolve(login({ email, password }))
       addNotification({ title: 'Welcome', message: 'Signed in successfully', type: 'success' })
-      // redirect back to requested page or home
-      nav(returnTo)
+
+      // Instead of navigating immediately, wait for UserContext.user to be populated
+      // ProtectedRoute checks UserContext.user and will redirect back to login if absent.
+      // Set a flag and let the effect below perform the final navigation when user is available.
+      setShouldNavigate(true)
     } catch (err) {
       // Friendly error mapping for common Supabase/auth errors
       const errMsg = err?.message || err?.error_description || err?.hint || String(err)
@@ -57,6 +61,23 @@ export default function Login() {
       setLoading(false) 
     }
   }
+
+  // When login has completed, wait for UserContext.user to be set (populated from supabase)
+  React.useEffect(() => {
+    if (!shouldNavigate) return
+    if (user) {
+      nav(returnTo)
+      setShouldNavigate(false)
+      return
+    }
+
+    // fallback: if user is not set within a short window, navigate anyway
+    const t = setTimeout(() => {
+      nav(returnTo)
+      setShouldNavigate(false)
+    }, 2000)
+    return () => clearTimeout(t)
+  }, [shouldNavigate, user, nav, returnTo])
 
   return (
   <div className="min-h-screen flex">
@@ -151,7 +172,7 @@ export default function Login() {
               placeholder="Email"
               value={email}
               onChange={e => setEmail(e.target.value)}
-              className="w-full px-0 py-3 bg-transparent border-0 border-b-2 border-gray-600 text-white placeholder-gray-500 focus:outline-none focus:border-[#006239] transition-colors"
+              className="w-full px-3 py-3 bg-transparent border-0 border-b-2 border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:border-[#006239] focus:bg-gray-800 transition-colors rounded-sm"
             />
           </div>
 
@@ -162,7 +183,7 @@ export default function Login() {
               placeholder="Password"
               value={password}
               onChange={e => setPassword(e.target.value)}
-              className="w-full px-0 py-3 bg-transparent border-0 border-b-2 border-gray-600 text-white placeholder-gray-500 focus:outline-none focus:border-[#006239] transition-colors"
+              className="w-full px-3 py-3 bg-transparent border-0 border-b-2 border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:border-[#006239] focus:bg-gray-800 transition-colors rounded-sm"
             />
           </div>
 
@@ -171,9 +192,16 @@ export default function Login() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3 bg-gray-800 hover:bg-gray-700 text-white font-medium rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              aria-busy={loading}
+              className="w-full py-3 bg-gray-800 hover:bg-gray-700 text-white font-medium rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
             >
-              {loading ? 'Signing in...' : 'Login Now'}
+              {loading && (
+                <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
+                </svg>
+              )}
+              <span>{loading ? 'Signing in...' : 'Login Now'}</span>
             </button>
             
             <button
