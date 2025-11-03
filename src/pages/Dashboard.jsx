@@ -30,8 +30,8 @@ export default function Dashboard() {
       {/* Page Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-semibold text-gray-900 dark:text-white">Dashboard</h1>
-          <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Welcome back! Here's what's happening with your inventory.</p>
+          <h1 className="text-2xl font-semibold text-white">Dashboard</h1>
+          <p className="text-sm text-gray-300 mt-1">Welcome back! Here's what's happening with your inventory.</p>
         </div>
         <PrimaryActionButton onClick={() => setShowAddProduct(true)}>
           <i className="fas fa-plus text-xs"></i>
@@ -57,34 +57,34 @@ export default function Dashboard() {
       {/* Additional Info Cards */}
   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Quick Actions */}
-        <div className="modern-card p-6 bg-white dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-800 shadow-sm">
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Quick Actions</h3>
+        <div className="modern-card p-6 bg-gray-900 rounded-lg border border-gray-800 shadow-sm">
+          <h3 className="text-lg font-semibold text-white mb-4">Quick Actions</h3>
           <div className="space-y-3">
-            <Link to="/purchases" className="w-full flex items-center gap-3 p-3 text-left rounded-lg transition-all duration-200 hover:bg-gray-50 dark:hover:bg-gray-800/50 hover:shadow-md hover:scale-[1.02] group">
+            <Link to="/purchases" className="w-full flex items-center gap-3 p-3 text-left rounded-lg transition-all duration-200 hover:bg-gray-800/50 hover:shadow-md hover:scale-[1.02] group">
               <div className="icon-circle purple transition-colors group-hover:bg-purple-100 dark:group-hover:bg-purple-900/30">
                 <i className="fas fa-shopping-cart transition-transform group-hover:scale-110"></i>
               </div>
               <div>
-                <p className="text-sm font-medium text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">New Purchase</p>
-                <p className="text-xs text-gray-500 dark:text-gray-400">Add inventory items</p>
+                <p className="text-sm font-medium text-white group-hover:text-purple-400 transition-colors">New Purchase</p>
+                <p className="text-xs text-gray-300">Add inventory items</p>
               </div>
             </Link>
-            <Link to="/sales" className="w-full flex items-center gap-3 p-3 text-left rounded-lg transition-all duration-200 hover:bg-gray-50 dark:hover:bg-gray-800/50 hover:shadow-md hover:scale-[1.02] group">
+            <Link to="/sales" className="w-full flex items-center gap-3 p-3 text-left rounded-lg transition-all duration-200 hover:bg-gray-800/50 hover:shadow-md hover:scale-[1.02] group">
               <div className="icon-circle teal transition-colors group-hover:bg-teal-100 dark:group-hover:bg-teal-900/30">
                 <i className="fas fa-cash-register transition-transform group-hover:scale-110"></i>
               </div>
               <div>
-                <p className="text-sm font-medium text-gray-900 dark:text-white group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors">Record Sale</p>
-                <p className="text-xs text-gray-500 dark:text-gray-400">Process a transaction</p>
+                <p className="text-sm font-medium text-white group-hover:text-teal-400 transition-colors">Record Sale</p>
+                <p className="text-xs text-gray-300">Process a transaction</p>
               </div>
             </Link>
-            <Link onClick={() => setShowAddProduct(true)} className="w-full flex items-center gap-3 p-3 text-left rounded-lg transition-all duration-200 hover:bg-gray-50 dark:hover:bg-gray-800/50 hover:shadow-md hover:scale-[1.02] group">
+            <Link onClick={() => setShowAddProduct(true)} className="w-full flex items-center gap-3 p-3 text-left rounded-lg transition-all duration-200 hover:bg-gray-800/50 hover:shadow-md hover:scale-[1.02] group">
               <div className="icon-circle orange transition-colors group-hover:bg-orange-100 dark:group-hover:bg-orange-900/30">
                 <i className="fas fa-box transition-transform group-hover:scale-110"></i>
               </div>
               <div>
-                <p className="text-sm font-medium text-gray-900 dark:text-white group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors">Add Product</p>
-                <p className="text-xs text-gray-500 dark:text-gray-400">Create new item</p>
+                <p className="text-sm font-medium text-white group-hover:text-orange-400 transition-colors">Add Product</p>
+                <p className="text-xs text-gray-300">Create new item</p>
               </div>
             </Link>
           </div>
@@ -141,7 +141,7 @@ export default function Dashboard() {
                       <div className={`w-2 h-2 rounded-full ${item.type === 'sale' ? 'bg-green-400' : item.type === 'purchase' ? 'bg-blue-400' : 'bg-purple-400'}`}></div>
                       <div className="flex-1">
                         <p className="text-sm text-white">{label}</p>
-                        <p className="text-xs text-gray-400">{timeAgo(item.date)}</p>
+                        <p className="text-xs text-gray-300">{timeAgo(item.date)}</p>
                       </div>
                     </div>
                   )
@@ -162,8 +162,8 @@ export default function Dashboard() {
           </div>
           
           <div className="space-y-3">
-            {stockAlerts.outOfStock > 0 && (
-              <div className="flex flex-col gap-2 p-3 bg-red-900/30 rounded-lg border border-red-800">
+              {stockAlerts.outOfStock > 0 && (
+                <div className="flex flex-col gap-2 p-3 bg-red-900/30 rounded-lg border border-red-800">
                 <div className="flex items-center gap-3">
                   <i className="fas fa-times-circle text-red-400"></i>
                   <div>
@@ -251,17 +251,17 @@ export default function Dashboard() {
   {/* Add Product Modal */}
       {showAddProduct && (
         <div className="fixed inset-0 bg-gray-900/75 dark:bg-black/75 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className="modern-card max-w-2xl w-full max-h-[90vh] overflow-y-auto mx-4 relative bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm">
+          <div className="modern-card max-w-2xl w-full max-h-[90vh] overflow-y-auto mx-4 relative bg-gray-900 rounded-xl border border-gray-800 shadow-sm">
             <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-orange-50 dark:bg-orange-900/20 rounded-lg flex items-center justify-center">
-                  <i className="fas fa-plus text-orange-600"></i>
+                <div className="w-10 h-10 bg-orange-900/20 rounded-lg flex items-center justify-center">
+                  <i className="fas fa-plus text-orange-400"></i>
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Add New Product</h3>
+                <h3 className="text-lg font-semibold text-white">Add New Product</h3>
               </div>
               <button
                 onClick={() => setShowAddProduct(false)}
-                className="absolute right-3 top-3 w-8 h-8 rounded bg-red-50 text-red-600 flex items-center justify-center hover:bg-red-100"
+                className="absolute right-3 top-3 w-8 h-8 rounded bg-gray-800 text-white flex items-center justify-center hover:bg-gray-700"
                 aria-label="Close add product"
               >
                 <i className="fas fa-times"></i>
@@ -271,8 +271,8 @@ export default function Dashboard() {
               <ProductForm onClose={() => setShowAddProduct(false)} submitRef={addProductSubmitRef} hideFooter={true} formId={addProductFormId} />
             </div>
 
-            <div className="px-6 py-4 bg-gray-50 dark:bg-gray-800 rounded-b-xl flex gap-3 justify-end border-t border-gray-100 dark:border-gray-800">
-              <button type="button" onClick={() => setShowAddProduct(false)} className="sb-transition-base px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">Cancel</button>
+            <div className="px-6 py-4 bg-gray-800 rounded-b-xl flex gap-3 justify-end border-t border-gray-700">
+              <button type="button" onClick={() => setShowAddProduct(false)} className="sb-transition-base px-4 py-2 text-sm font-medium text-white bg-gray-700 border border-gray-700 rounded-lg hover:bg-gray-600">Cancel</button>
               <button type="button" onClick={() => { if (addProductSubmitRef.current) addProductSubmitRef.current(); else document.getElementById(addProductFormId)?.requestSubmit?.(); }} className="sb-transition-base px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-supabase-600 to-supabase-500 hover:from-supabase-500 hover:to-supabase-400 rounded-lg">Save</button>
             </div>
           </div>

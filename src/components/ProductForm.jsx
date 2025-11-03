@@ -84,42 +84,42 @@ export default function ProductForm({ onClose, initial, submitRef = null, hideFo
   return (
     <form id={formId} onSubmit={submit} className="sb-fade-in">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-        <input required placeholder="Product name (e.g., Indomie Noodles)" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} className="sb-transition-base p-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded col-span-1 md:col-span-2 focus:outline-none focus:ring-2 focus:ring-supabase-500/20" />
-        <input placeholder="Category (e.g., Food)" value={form.category} onChange={e => setForm({ ...form, category: e.target.value })} className="sb-transition-base p-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded" />
+        <input required placeholder="Product name (e.g., Indomie Noodles)" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} className="sb-transition-base p-2 bg-gray-800 border border-gray-700 rounded col-span-1 md:col-span-2 focus:outline-none focus:ring-2 focus:ring-supabase-500/20 text-white placeholder-gray-400" />
+        <input placeholder="Category (e.g., Food)" value={form.category} onChange={e => setForm({ ...form, category: e.target.value })} className="sb-transition-base p-2 bg-gray-800 border border-gray-700 rounded text-white placeholder-gray-400" />
 
   {/* Hierarchical: pack size -> initial packs -> initial units (auto) */}
           <div>
-              <label htmlFor="product-pack_size" className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">Pack size (units)</label>
-              <input id="product-pack_size" title="Pack size (units) - e.g., 12" type="number" placeholder="Pack size (units) - e.g., 12" value={form.pack_size} onChange={e => setForm({ ...form, pack_size: Number(e.target.value) })} className="sb-transition-base p-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded focus:outline-none focus:ring-2 focus:ring-supabase-500/20" />
+              <label htmlFor="product-pack_size" className="block text-sm font-medium text-gray-300 mb-1">Pack size (units)</label>
+              <input id="product-pack_size" title="Pack size (units) - e.g., 12" type="number" placeholder="Pack size (units) - e.g., 12" value={form.pack_size} onChange={e => setForm({ ...form, pack_size: Number(e.target.value) })} className="sb-transition-base p-2 bg-gray-800 border border-gray-700 rounded focus:outline-none focus:ring-2 focus:ring-supabase-500/20 text-white placeholder-gray-400" />
           </div>
           <div>
-            <label htmlFor="product-initial_packs" className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">Initial packs (optional)</label>
-            <input id="product-initial_packs" title="Initial packs (optional)" type="number" placeholder="Initial packs (optional)" value={form.initial_packs} onChange={e => setForm({ ...form, initial_packs: Number(e.target.value) })} className="sb-transition-base p-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded focus:outline-none focus:ring-2 focus:ring-supabase-500/20" />
+            <label htmlFor="product-initial_packs" className="block text-sm font-medium text-gray-300 mb-1">Initial packs (optional)</label>
+            <input id="product-initial_packs" title="Initial packs (optional)" type="number" placeholder="Initial packs (optional)" value={form.initial_packs} onChange={e => setForm({ ...form, initial_packs: Number(e.target.value) })} className="sb-transition-base p-2 bg-gray-800 border border-gray-700 rounded focus:outline-none focus:ring-2 focus:ring-supabase-500/20 text-white placeholder-gray-400" />
           </div>
           <div>
-            <label htmlFor="product-initial_units" className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">Initial units</label>
-            <input id="product-initial_units" title="Initial units (calculated)" type="number" placeholder="Initial units (calculated)" value={form.initial_units} onChange={e => { setInitialUnitsManual(true); setForm(prev => ({ ...prev, initial_units: e.target.value })) }} className="sb-transition-base p-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded focus:outline-none focus:ring-2 focus:ring-supabase-500/20" />
+            <label htmlFor="product-initial_units" className="block text-sm font-medium text-gray-300 mb-1">Initial units</label>
+            <input id="product-initial_units" title="Initial units (calculated)" type="number" placeholder="Initial units (calculated)" value={form.initial_units} onChange={e => { setInitialUnitsManual(true); setForm(prev => ({ ...prev, initial_units: e.target.value })) }} className="sb-transition-base p-2 bg-gray-800 border border-gray-700 rounded focus:outline-none focus:ring-2 focus:ring-supabase-500/20 text-white placeholder-gray-400" />
             <div className="text-xs text-gray-500 mt-1">
             {!initialUnitsManual ? (<span>Calculated from packs × pack size</span>) : (<span className="italic">Manual override</span>)}
           </div>
         </div>
 
           <div>
-            <label htmlFor="product-low_stock_threshold" className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">Low stock threshold (units)</label>
-            <input id="product-low_stock_threshold" title="Low stock threshold" type="number" placeholder="0 (disabled)" value={form.low_stock_threshold} onChange={e => setForm(prev => ({ ...prev, low_stock_threshold: Number(e.target.value) }))} className="sb-transition-base p-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded focus:outline-none focus:ring-2 focus:ring-supabase-500/20" />
+            <label htmlFor="product-low_stock_threshold" className="block text-sm font-medium text-gray-300 mb-1">Low stock threshold (units)</label>
+            <input id="product-low_stock_threshold" title="Low stock threshold" type="number" placeholder="0 (disabled)" value={form.low_stock_threshold} onChange={e => setForm(prev => ({ ...prev, low_stock_threshold: Number(e.target.value) }))} className="sb-transition-base p-2 bg-gray-800 border border-gray-700 rounded focus:outline-none focus:ring-2 focus:ring-supabase-500/20 text-white placeholder-gray-400" />
             <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">When product stock is ≤ this value, it will show a <em>Low stock</em> badge.</div>
           </div>
 
   {/* Costs: cost per pack -> cost per unit (auto) */}
-  <input placeholder="Cost per pack (₦) - e.g., 1440.00" value={form.cost_per_pack} onChange={e => setForm({ ...form, cost_per_pack: e.target.value })} className="sb-transition-base p-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded" />
+  <input placeholder="Cost per pack (₦) - e.g., 1440.00" value={form.cost_per_pack} onChange={e => setForm({ ...form, cost_per_pack: e.target.value })} className="sb-transition-base p-2 bg-gray-800 border border-gray-700 rounded text-white placeholder-gray-400" />
         <div className="flex items-center gap-2">
-          <input placeholder="Cost per unit (₦) - e.g., 120.00" value={form.cost_per_unit} onChange={e => setForm({ ...form, cost_per_unit: e.target.value })} className="sb-transition-base p-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded flex-1" />
-          <button type="button" onClick={() => setShowCalc(s => !s)} className="text-xs text-gray-500 px-2">Calculate</button>
+          <input placeholder="Cost per unit (₦) - e.g., 120.00" value={form.cost_per_unit} onChange={e => setForm({ ...form, cost_per_unit: e.target.value })} className="sb-transition-base p-2 bg-gray-800 border border-gray-700 rounded flex-1 text-white placeholder-gray-400" />
+          <button type="button" onClick={() => setShowCalc(s => !s)} className="text-xs text-gray-400 px-2">Calculate</button>
         </div>
 
         {/* Selling prices */}
-  <input placeholder="Selling per pack (₦) - e.g., 1800.00" value={form.selling_per_pack} onChange={e => setForm({ ...form, selling_per_pack: e.target.value })} className="sb-transition-base p-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded" />
-  <input placeholder="Selling per unit (₦) - e.g., 150.00" value={form.selling_per_unit} onChange={e => setForm({ ...form, selling_per_unit: e.target.value })} className="sb-transition-base p-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded" />
+  <input placeholder="Selling per pack (₦) - e.g., 1800.00" value={form.selling_per_pack} onChange={e => setForm({ ...form, selling_per_pack: e.target.value })} className="sb-transition-base p-2 bg-gray-800 border border-gray-700 rounded text-white placeholder-gray-400" />
+  <input placeholder="Selling per unit (₦) - e.g., 150.00" value={form.selling_per_unit} onChange={e => setForm({ ...form, selling_per_unit: e.target.value })} className="sb-transition-base p-2 bg-gray-800 border border-gray-700 rounded text-white placeholder-gray-400" />
 
         {showCalc && (
           <div className="col-span-2 bg-gray-800/50 border border-gray-700 p-3 rounded text-sm text-gray-200">
@@ -146,9 +146,9 @@ export default function ProductForm({ onClose, initial, submitRef = null, hideFo
         )}
       </div>
       {!hideFooter ? (
-        <div className="mt-3 flex gap-2">
+          <div className="mt-3 flex gap-2">
           <button type="submit" className="sb-transition-base px-3 py-2 rounded-lg text-sm font-medium inline-flex items-center gap-2 bg-gradient-to-r from-supabase-600 to-supabase-500 text-white">Save</button>
-          <button type="button" onClick={() => onClose?.()} className="sb-transition-base px-3 py-2 rounded-lg text-sm font-medium bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">Cancel</button>
+          <button type="button" onClick={() => onClose?.()} className="sb-transition-base px-3 py-2 rounded-lg text-sm font-medium bg-gray-800 border border-gray-700 text-gray-200">Cancel</button>
         </div>
       ) : null}
     </form>

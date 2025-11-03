@@ -118,17 +118,17 @@ export default function SalesChart() {
   const totalUnitsSold = sales.reduce((sum, sale) => sum + (sale.total_units_sold || 0), 0)
 
   return (
-    <div className="modern-card p-6 group hover:shadow-lg transition-all duration-300 bg-white dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-800">
+    <div className="modern-card p-6 group hover:shadow-lg transition-all duration-300 bg-gray-900 rounded-lg border border-gray-800">
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Sales Trend</h3>
-          <p className="text-sm text-gray-500 dark:text-gray-400">Units sold over time</p>
+          <h3 className="text-lg font-semibold text-white">Sales Trend</h3>
+          <p className="text-sm text-gray-300">Units sold over time</p>
         </div>
         <div className="flex items-center gap-2">
           <select 
             value={filter}
             onChange={(e) => setFilter(e.target.value)}
-            className="sb-transition-base text-xs border border-gray-200 dark:border-gray-700 rounded-lg px-3 py-1 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-500/20"
+            className="sb-transition-base text-xs border border-gray-700 rounded-lg px-3 py-1 bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-teal-500/20"
           >
             <option value="day">Daily</option>
             <option value="week">Weekly</option>
@@ -145,13 +145,13 @@ export default function SalesChart() {
         <canvas ref={canvasRef} />
       </div>
       
-      <div className="mt-4 pt-4 border-t border-gray-100 dark:border-gray-800">
+      <div className="mt-4 pt-4 border-t border-gray-700">
         <div className="flex items-center justify-between text-sm">
           <div className="flex items-center gap-2">
             <div className="w-3 h-3 bg-teal-500 rounded-full"></div>
-            <span className="text-gray-600 dark:text-gray-300">Total Units Sold</span>
+            <span className="text-gray-300">Total Units Sold</span>
           </div>
-          <span className="font-semibold text-gray-900 dark:text-white">
+          <span className="font-semibold text-white">
             {totalUnitsSold.toLocaleString()}
           </span>
         </div>

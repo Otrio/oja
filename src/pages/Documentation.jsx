@@ -71,24 +71,24 @@ export default function Documentation() {
 
       case 'getting-started':
         return (
-          <div className="space-y-8">
-            <div>
-              <h1 className="text-4xl font-bold text-gray-900 mb-4">Getting Started</h1>
-              <p className="text-xl text-gray-600">
+            <div className="space-y-6">
+              <div>
+              <h1 className="text-4xl font-bold text-white mb-4">Getting Started</h1>
+              <p className="text-xl text-gray-300">
                 Learn how to set up and start using Oja for your inventory management needs.
               </p>
             </div>
 
             <div className="space-y-6">
-              <div className="bg-white p-6 rounded-lg border border-gray-200">
-                <h2 className="text-2xl font-semibold text-gray-900 mb-4">1. Account Setup</h2>
+              <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                <h2 className="text-2xl font-semibold text-white mb-4">1. Account Setup</h2>
                 <div className="space-y-4">
                   <div>
-                    <h3 className="text-lg font-medium text-gray-900 mb-2">Creating Your Account</h3>
-                    <p className="text-gray-600 mb-3">
+                    <h3 className="text-lg font-medium text-white mb-2">Creating Your Account</h3>
+                    <p className="text-gray-300 mb-3">
                       To get started with Oja, you'll need to create an account:
                     </p>
-                    <ol className="list-decimal list-inside space-y-2 text-gray-600 ml-4">
+                    <ol className="list-decimal list-inside space-y-2 text-gray-300 ml-4">
                       <li>Navigate to the signup page</li>
                       <li>Enter your email address and create a secure password</li>
                       <li>Complete the email verification process</li>
@@ -98,15 +98,15 @@ export default function Documentation() {
                 </div>
               </div>
 
-              <div className="bg-white p-6 rounded-lg border border-gray-200">
-                <h2 className="text-2xl font-semibold text-gray-900 mb-4">2. First Login</h2>
+              <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                <h2 className="text-2xl font-semibold text-white mb-4">2. First Login</h2>
                 <div className="space-y-4">
                   <div>
-                    <h3 className="text-lg font-medium text-gray-900 mb-2">Dashboard Overview</h3>
-                    <p className="text-gray-600 mb-3">
+                    <h3 className="text-lg font-medium text-white mb-2">Dashboard Overview</h3>
+                    <p className="text-gray-300 mb-3">
                       After logging in, you'll see the main dashboard with:
                     </p>
-                    <ul className="list-disc list-inside space-y-2 text-gray-600 ml-4">
+                    <ul className="list-disc list-inside space-y-2 text-gray-300 ml-4">
                       <li>Key performance metrics and statistics</li>
                       <li>Recent sales and purchase activities</li>
                       <li>Stock alerts and notifications</li>
@@ -116,15 +116,15 @@ export default function Documentation() {
                 </div>
               </div>
 
-              <div className="bg-white p-6 rounded-lg border border-gray-200">
-                <h2 className="text-2xl font-semibold text-gray-900 mb-4">3. Initial Setup</h2>
+              <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                <h2 className="text-2xl font-semibold text-white mb-4">3. Initial Setup</h2>
                 <div className="space-y-4">
                   <div>
-                    <h3 className="text-lg font-medium text-gray-900 mb-2">Adding Your First Product</h3>
-                    <p className="text-gray-600 mb-3">
+                    <h3 className="text-lg font-medium text-white mb-2">Adding Your First Product</h3>
+                    <p className="text-gray-300 mb-3">
                       Start by adding your first product to the system:
                     </p>
-                    <ol className="list-decimal list-inside space-y-2 text-gray-600 ml-4">
+                    <ol className="list-decimal list-inside space-y-2 text-gray-300 ml-4">
                       <li>Click the "Add" button on the dashboard or navigate to Products</li>
                       <li>Fill in the product details (name, category, description)</li>
                       <li>Set up pricing (unit, pack, carton prices)</li>
@@ -149,24 +149,24 @@ export default function Documentation() {
             </div>
 
             <div className="space-y-6">
-              <div className="bg-white p-6 rounded-lg border border-gray-200">
-                <h2 className="text-2xl font-semibold text-gray-900 mb-4">Product Structure</h2>
+              <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                <h2 className="text-2xl font-semibold text-white mb-4">Product Structure</h2>
                 <div className="space-y-4">
-                  <p className="text-gray-600">
+                  <p className="text-gray-300">
                     Products in Oja support a hierarchical structure with three levels:
                   </p>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div className="bg-gray-50 p-4 rounded-lg">
-                      <h3 className="font-semibold text-gray-900 mb-2">Units</h3>
-                      <p className="text-sm text-gray-600">Individual items (e.g., 1 bottle, 1 piece)</p>
+                    <div className="bg-gray-700 p-4 rounded-lg">
+                      <h3 className="font-semibold text-white mb-2">Units</h3>
+                      <p className="text-sm text-gray-300">Individual items (e.g., 1 bottle, 1 piece)</p>
                     </div>
-                    <div className="bg-gray-50 p-4 rounded-lg">
-                      <h3 className="font-semibold text-gray-900 mb-2">Packs</h3>
-                      <p className="text-sm text-gray-600">Collections of units (e.g., 12 bottles per pack)</p>
+                    <div className="bg-gray-700 p-4 rounded-lg">
+                      <h3 className="font-semibold text-white mb-2">Packs</h3>
+                      <p className="text-sm text-gray-300">Collections of units (e.g., 12 bottles per pack)</p>
                     </div>
-                    <div className="bg-gray-50 p-4 rounded-lg">
-                      <h3 className="font-semibold text-gray-900 mb-2">Cartons</h3>
-                      <p className="text-sm text-gray-600">Collections of packs (e.g., 6 packs per carton)</p>
+                    <div className="bg-gray-700 p-4 rounded-lg">
+                      <h3 className="font-semibold text-white mb-2">Cartons</h3>
+                      <p className="text-sm text-gray-300">Collections of packs (e.g., 6 packs per carton)</p>
                     </div>
                   </div>
                 </div>

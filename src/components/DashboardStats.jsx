@@ -197,10 +197,10 @@ export default function DashboardStats() {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div className="modern-card p-6 bg-white dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-800 shadow-sm">
+  <div className="modern-card p-6 bg-gray-900 rounded-lg border border-gray-800 shadow-sm">
         <div className="flex items-center justify-between">
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Inventory Alerts</h3>
+            <h3 className="text-lg font-semibold text-white">Inventory Alerts</h3>
             <div className="space-y-2 mt-2">
               {products.filter(p => {
                 // Skip deleted products
@@ -227,12 +227,12 @@ export default function DashboardStats() {
                 // If units is 0, it's out of stock
                 if (units === 0) {
                   return (
-                    <div key={p.id} className="text-sm text-red-500 dark:text-red-400">• {p.name}</div>
+                    <div key={p.id} className="text-sm text-red-400">• {p.name}</div>
                   );
                 }
                 // Otherwise it's low stock
                 return (
-                  <div key={p.id} className="text-sm text-yellow-500 dark:text-yellow-400">
+                  <div key={p.id} className="text-sm text-yellow-400">
                     • {p.name} ({units} units left)
                   </div>
                 );
@@ -240,96 +240,96 @@ export default function DashboardStats() {
             </div>
           </div>
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-300 rounded-full flex items-center justify-center">
+            <div className="w-10 h-10 bg-blue-900/20 text-blue-300 rounded-full flex items-center justify-center">
               <i className="fas fa-box text-lg"></i>
             </div>
             <div className="text-right">
-              <div className="text-xl font-bold text-gray-900 dark:text-white">{totalProducts}</div>
+              <div className="text-xl font-bold text-white">{totalProducts}</div>
             </div>
           </div>
         </div>
       </div>
-
-      <div className="modern-card p-6 bg-white dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-800 shadow-sm">
+      
+      <div className="modern-card p-6 bg-gray-900 rounded-lg border border-gray-800 shadow-sm">
         <div className="flex items-center justify-between">
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Purchases</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400">Total cost of purchases</p>
+            <h3 className="text-lg font-semibold text-white">Purchases</h3>
+            <p className="text-sm text-gray-400">Total cost of purchases</p>
           </div>
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-yellow-50 dark:bg-yellow-900/20 text-yellow-600 dark:text-yellow-300 rounded-full flex items-center justify-center">
+            <div className="w-10 h-10 bg-yellow-900/20 text-yellow-300 rounded-full flex items-center justify-center">
               <i className="fas fa-download text-lg"></i>
             </div>
             <div className="text-right">
-              <div className="text-xl font-bold text-gray-900 dark:text-white">{formatCurrency(totalPurchases)}</div>
+              <div className="text-xl font-bold text-white">{formatCurrency(totalPurchases)}</div>
             </div>
           </div>
         </div>
       </div>
-
-      <div className="modern-card p-6 bg-white dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-800 shadow-sm">
+      
+      <div className="modern-card p-6 bg-gray-900 rounded-lg border border-gray-800 shadow-sm">
         <div className="flex items-center justify-between">
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Sales</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400">Total revenue from sales</p>
+            <h3 className="text-lg font-semibold text-white">Sales</h3>
+            <p className="text-sm text-gray-400">Total revenue from sales</p>
           </div>
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-300 rounded-full flex items-center justify-center">
+            <div className="w-10 h-10 bg-indigo-900/20 text-indigo-300 rounded-full flex items-center justify-center">
               <i className="fas fa-upload text-lg"></i>
             </div>
             <div className="text-right">
-              <div className="text-xl font-bold text-gray-900 dark:text-white">{formatCurrency(totalSales)}</div>
+              <div className="text-xl font-bold text-white">{formatCurrency(totalSales)}</div>
             </div>
           </div>
         </div>
       </div>
-
-      <div className="modern-card p-6 bg-white dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-800 shadow-sm">
+      
+      <div className="modern-card p-6 bg-gray-900 rounded-lg border border-gray-800 shadow-sm">
         <div className="flex items-center justify-between">
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Profit</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400">Total profit from sales</p>
+            <h3 className="text-lg font-semibold text-white">Profit</h3>
+            <p className="text-sm text-gray-400">Total profit from sales</p>
           </div>
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 dark:text-emerald-300 rounded-full flex items-center justify-center">
+            <div className="w-10 h-10 bg-emerald-900/20 text-emerald-300 rounded-full flex items-center justify-center">
               <i className="fas fa-coins text-lg"></i>
             </div>
             <div className="text-right">
-              <div className="text-xl font-bold text-gray-900 dark:text-white">{formatCurrency(totalProfit)}</div>
+              <div className="text-xl font-bold text-white">{formatCurrency(totalProfit)}</div>
             </div>
           </div>
         </div>
       </div>
-
-      <div className="modern-card p-6 bg-white dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-800 shadow-sm">
+      
+      <div className="modern-card p-6 bg-gray-900 rounded-lg border border-gray-800 shadow-sm">
         <div className="flex items-center justify-between">
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Stock</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400">Units currently in stock</p>
+            <h3 className="text-lg font-semibold text-white">Stock</h3>
+            <p className="text-sm text-gray-400">Units currently in stock</p>
           </div>
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-300 rounded-full flex items-center justify-center">
+            <div className="w-10 h-10 bg-green-900/20 text-green-300 rounded-full flex items-center justify-center">
               <i className="fas fa-warehouse text-lg"></i>
             </div>
             <div className="text-right">
-              <div className="text-xl font-bold text-gray-900 dark:text-white">{totalStock}</div>
+              <div className="text-xl font-bold text-white">{totalStock}</div>
             </div>
           </div>
         </div>
       </div>
-
-      <div className="modern-card p-6 bg-white dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-800 shadow-sm">
+      
+      <div className="modern-card p-6 bg-gray-900 rounded-lg border border-gray-800 shadow-sm">
         <div className="flex items-center justify-between">
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Inventory Value</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400">Estimated stock value</p>
+            <h3 className="text-lg font-semibold text-white">Inventory Value</h3>
+            <p className="text-sm text-gray-400">Estimated stock value</p>
           </div>
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-purple-50 dark:bg-purple-900/20 text-purple-600 dark:text-purple-300 rounded-full flex items-center justify-center">
+            <div className="w-10 h-10 bg-purple-900/20 text-purple-300 rounded-full flex items-center justify-center">
                 <i className="fas fa-wallet text-lg"></i>
             </div>
             <div className="text-right">
-              <div className="text-xl font-bold text-gray-900 dark:text-white">{formatCurrency(totalValue)}</div>
+              <div className="text-xl font-bold text-white">{formatCurrency(totalValue)}</div>
             </div>
           </div>
         </div>

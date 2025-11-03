@@ -44,7 +44,6 @@ function Sidebar({ onClose, isOpen }) {
     { path: '/available-stock', icon: 'fas fa-warehouse', label: 'Available Stock' },
     { path: '/history', icon: 'fas fa-archive', label: 'History' },
     { path: '/notifications', icon: 'fas fa-bell', label: 'Notifications' },
-    { path: '/documentation', icon: 'fas fa-book', label: 'Documentation' },
   ]
 
   // Only show admin routes to admins
